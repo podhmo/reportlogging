@@ -16,6 +16,8 @@ except IOError:
 
 
 install_requires = [
+    "six",
+    "cached_property"
 ]
 
 
