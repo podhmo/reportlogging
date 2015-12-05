@@ -113,7 +113,13 @@ class ReportLoggerManager(object):
         loggers.append(self.logger)
         return MultiLogger(loggers)
 
-    def activate(self):
+    def activate(self, level=None, format=None, style="%"):
+        if level is not None:
+            self.logger.setLevel(level)
+            self.handler.setLevel(level)
+        if format is not None:
+            self.formatter = logging.Formatter(format, style=style)
+            self.handler.setFormatter(self.formatter)
         self.logger.addHandler(self.handler)
 
     def getvalue(self):
